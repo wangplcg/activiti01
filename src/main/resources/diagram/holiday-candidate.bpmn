@@ -5,19 +5,19 @@
              xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              id="Definitions_0f6wyar" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="7.5.0">
-  <process id="Process_0781px6"  isExecutable="true" isClosed="false" name="请假流程">
+  <process id="hoildayCandidate"  isExecutable="true" isClosed="false" name="请假流程">
     <startEvent id="StartEvent_08mjynh">
       <outgoing>Flow_1j6ef4k</outgoing>
     </startEvent>
-    <userTask id="Activity_0zrhp9h" name="填写请假单" activiti:assignee="zhangsan" activiti:exclusive="true">
+    <userTask id="Activity_0zrhp9h" name="填写请假单" activiti:assignee="${assignee1}" activiti:exclusive="true">
       <incoming>Flow_1j6ef4k</incoming>
       <outgoing>Flow_1nscrzx</outgoing>
     </userTask>
-    <userTask id="Activity_13d8kez" name="部门经理审批" activiti:assignee="lisi" activiti:exclusive="true">
+    <userTask id="Activity_13d8kez" name="部门经理审批" activiti:candidateUsers="zhangsan,lisi,wangwu,zhaoliu" activiti:exclusive="true">
       <incoming>Flow_1nscrzx</incoming>
       <outgoing>Flow_0u5njtk</outgoing>
     </userTask>
-    <userTask id="Activity_1knjljn" name="总经理审批" activiti:assignee="wangwu" activiti:exclusive="true">
+    <userTask id="Activity_1knjljn" name="总经理审批" activiti:assignee="${assignee3}" activiti:exclusive="true">
       <incoming>Flow_0u5njtk</incoming>
       <outgoing>Flow_08npz6g</outgoing>
     </userTask>
@@ -30,7 +30,7 @@
     <sequenceFlow id="Flow_08npz6g" sourceRef="Activity_1knjljn" targetRef="Event_0iekqgb" />
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0781px6">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="hoildayCandidate">
       <bpmndi:BPMNEdge id="Flow_1j6ef4k_di" bpmnElement="Flow_1j6ef4k">
         <di:waypoint x="210" y="138" />
         <di:waypoint x="210" y="200" />

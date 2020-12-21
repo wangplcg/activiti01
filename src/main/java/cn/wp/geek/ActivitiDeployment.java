@@ -9,7 +9,7 @@ import org.activiti.engine.repository.Deployment;
 public class ActivitiDeployment {
 
     /**
-     * 流程部署 影响表数据
+     * 流程部署 影响表数据, 流程定义删除也为下面三张表
      *   act_re_deployment   部署信息
      *   act_re_procdef      流程定义信息
      *   act_ge_bytearray    流程定义bpmn文件  资源文件
@@ -21,8 +21,10 @@ public class ActivitiDeployment {
         RepositoryService repositoryService = processEngine.getRepositoryService();
 
         Deployment deployment = repositoryService.createDeployment()
-                .addClasspathResource("diagram/holiday.bpmn")
-                .name("请假流程")
+                .addClasspathResource("diagram/holiday-candidate.bpmn")
+//                可按照zip文件进行部署
+//                .addZipInputStream()
+                .name("请假流程-候选人")
                 .deploy();
 
         System.out.println(deployment.getId());
